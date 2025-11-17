@@ -158,7 +158,7 @@ export default function Home() {
     { label: 'CGPA', value: '7.70', icon: GraduationCap }
   ];
 
-  const scrollToSection = (section) => {
+  const scrollToSection = (section: string) => {
     setActiveSection(section.toLowerCase());
     setIsMenuOpen(false);
     document.getElementById(section.toLowerCase())?.scrollIntoView({ behavior: 'smooth' });
