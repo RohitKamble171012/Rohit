@@ -18,40 +18,40 @@ export default function Home() {
   ];
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
+  const handleScroll = () => {
+    setScrollY(window.scrollY);
 
-      // Update active section based on scroll position
-      const sections = ['home', 'about', 'skills', 'projects', 'experience', 'education', 'contact'];
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            setActiveSection(section);
-            break;
-          }
+    const sections = ['home', 'about', 'skills', 'projects', 'experience', 'education', 'contact'];
+    for (const section of sections) {
+      const element = document.getElementById(section);
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        if (rect.top <= 100 && rect.bottom >= 100) {
+          setActiveSection(section);
+          break;
         }
       }
-    };
+    }
+  };
 
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
+  const handleMouseMove = (e: MouseEvent) => {
+    setMousePosition({ x: e.clientX, y: e.clientY });
+  };
 
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('mousemove', handleMouseMove);
+  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('mousemove', handleMouseMove);
 
-    const roleInterval = setInterval(() => {
-      setCurrentRole((prev) => (prev + 1) % roles.length);
-    }, 3000);
+  const roleInterval = setInterval(() => {
+    setCurrentRole(prev => (prev + 1) % roles.length);
+  }, 3000);
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('mousemove', handleMouseMove);
-      clearInterval(roleInterval);
-    };
-  }, []);
+  return () => {
+    window.removeEventListener('scroll', handleScroll);
+    window.removeEventListener('mousemove', handleMouseMove);
+    clearInterval(roleInterval);
+  };
+}, []);
+
 
   const navItems = ['Home', 'About', 'Skills', 'Projects', 'Experience', 'Education', 'Contact'];
 
