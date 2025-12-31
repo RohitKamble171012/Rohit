@@ -110,6 +110,20 @@ export default function Home() {
 
   const experiences = [
     {
+      title: 'Software Developer (Freelance)',
+      company: 'Sharp Engineering',
+      period: 'Sept 2025 – Dec 2025',
+      description: 'Designed and developed the official company website from scratch, delivering a fully responsive, SEO-optimized solution to improve online presence and accessibility.',
+      achievements: [
+        'Built complete website using Next.js, React, and Tailwind CSS',
+        'Deployed and managed production website on Vercel with fast load times',
+        'Collaborated with stakeholders to translate business requirements',
+        'Created responsive, professional UI accessible across all devices'
+      ],
+      icon: Briefcase,
+      link: 'https://www.sharpengineering.online/'
+    },
+    {
       title: 'IIT Fullstack Web Development Internship',
       period: 'July 2025 – Oct 2025',
       description: 'Collaboratively developed SmartLearn Hub, an interactive learning platform with quizzes, tests, and AI-assisted learning features. Worked on both frontend and backend development.',
@@ -233,20 +247,16 @@ export default function Home() {
         <div className="text-center max-w-6xl mx-auto relative z-10">
           <div className="animate-fade-in">
             {/* Profile Photo */}
-            {/* Profile Photo */}
             <div className="mb-8 flex justify-center">
               <div className="relative group">
                 <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
 
                 <div className="relative w-48 h-48 rounded-full overflow-hidden border-4 border-purple-500/50 shadow-2xl shadow-purple-500/50 bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center">
-
-                  {/* Your Image Here */}
                   <img
                     src="/rohit.jpg"
                     alt="Rohit Kamble"
                     className="w-full h-full object-cover"
                   />
-
                 </div>
               </div>
             </div>
@@ -309,7 +319,6 @@ export default function Home() {
                 <Download size={20} className="group-hover:translate-y-1 transition-transform" />
                 View Resume
               </button>
-
             </div>
 
             {/* Social Links */}
@@ -494,7 +503,7 @@ export default function Home() {
           {/* Internships */}
           <div className="mb-12">
             <h3 className="text-2xl font-semibold mb-6 text-purple-400 flex items-center gap-2">
-              <Briefcase className="animate-pulse" /> Internships
+              <Briefcase className="animate-pulse" /> Professional Experience
             </h3>
             <div className="space-y-6">
               {experiences.map((exp, idx) => (
@@ -520,6 +529,11 @@ export default function Home() {
                           </li>
                         ))}
                       </ul>
+                      {exp.link && (
+                        <a href={exp.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-4 text-purple-400 hover:text-purple-300 transition-all hover:scale-105">
+                          <ExternalLink size={16} /> View Website
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -658,11 +672,17 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-6 mb-8">
               <a href="mailto:rohikamble171012@gmail.com" className="group bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-xl p-6 border border-purple-500/30 hover:border-purple-500/50 transition-all hover:scale-105">
                 <Mail className="w-8 h-8 mx-auto mb-3 text-purple-400 group-hover:rotate-12 transition-transform" />
-                <h3 className="font-bold mb-2">Email</h3>
+                <h3 className="font-bold mb-2">Primary Email</h3>
                 <p className="text-sm text-gray-400">rohikamble171012@gmail.com</p>
               </a>
 
-              <a href="tel:+918010409600" className="group bg-gradient-to-r from-pink-600/20 to-purple-600/20 rounded-xl p-6 border border-pink-500/30 hover:border-pink-500/50 transition-all hover:scale-105">
+              <a href="mailto:rohitkamble171012@gmail.com" className="group bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-xl p-6 border border-purple-500/30 hover:border-purple-500/50 transition-all hover:scale-105">
+                <Mail className="w-8 h-8 mx-auto mb-3 text-purple-400 group-hover:rotate-12 transition-transform" />
+                <h3 className="font-bold mb-2">Secondary Email</h3>
+                <p className="text-sm text-gray-400">rohitkamble171012@gmail.com</p>
+              </a>
+
+              <a href="tel:+918010409600" className="group bg-gradient-to-r from-pink-600/20 to-purple-600/20 rounded-xl p-6 border border-pink-500/30 hover:border-pink-500/50 transition-all hover:scale-105 md:col-span-2">
                 <Phone className="w-8 h-8 mx-auto mb-3 text-pink-400 group-hover:rotate-12 transition-transform" />
                 <h3 className="font-bold mb-2">Phone</h3>
                 <p className="text-sm text-gray-400">+91 8010409600</p>
