@@ -153,7 +153,7 @@ export default function Home() {
     { label: 'CGPA', value: '7.8' }
   ];
 
-  const scrollTo = (section) => {
+  const scrollTo = (section: string) => {
     setIsMenuOpen(false);
     document.getElementById(section.toLowerCase())?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -169,7 +169,7 @@ export default function Home() {
   const border  = 'rgba(232,168,56,0.18)';
   const borderHover = 'rgba(232,168,56,0.45)';
 
-  const sectionTitle = (sub, main) => (
+  const sectionTitle = (sub: string, main: string) => (
     <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
       <p style={{ color: gold, fontSize: 12, fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 8 }}>{sub}</p>
       <h2 style={{ fontSize: '2.25rem', fontWeight: 700, color: white, margin: 0 }}>{main}</h2>
@@ -275,10 +275,17 @@ export default function Home() {
               <div style={{ width: 280, height: 320, borderRadius: 12, overflow: 'hidden', border: `3px solid ${gold}`, boxShadow: `0 0 40px rgba(232,168,56,0.2)` }}>
                 <img src="/rohit.jpg" alt="Rohit Kamble"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                  onError={e => { e.target.style.display='none'; e.target.parentElement.style.background='linear-gradient(135deg,#162947,#0F2040)'; e.target.parentElement.innerHTML += '<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:5rem;font-weight:800;color:#E8A838;">RK</div>'; }}
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    if (target.parentElement) {
+                      target.parentElement.style.background = 'linear-gradient(135deg,#162947,#0F2040)';
+                      target.parentElement.innerHTML += '<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:5rem;font-weight:800;color:#E8A838;">RK</div>';
+                    }
+                  }}
                 />
               </div>
-              
+
               <div style={{ position: 'absolute', top: -12, left: -12, background: navyMid, border: `1px solid ${border}`, borderRadius: 8, padding: '8px 14px' }}>
                 <span style={{ fontSize: 12, fontWeight: 600, color: gold }}>📍 Kolhapur, MH</span>
               </div>
@@ -293,8 +300,8 @@ export default function Home() {
               ].map(({ icon: Icon, href }, i) => (
                 <a key={i} href={href} target="_blank" rel="noopener noreferrer"
                   style={{ width: 44, height: 44, borderRadius: 8, background: navyMid, border: `1px solid ${border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: muted, textDecoration: 'none', transition: 'all 0.2s' }}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = gold; e.currentTarget.style.color = gold; }}
-                  onMouseLeave={e => { e.currentTarget.style.borderColor = border; e.currentTarget.style.color = muted; }}>
+                  onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = gold; (e.currentTarget as HTMLAnchorElement).style.color = gold; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = border; (e.currentTarget as HTMLAnchorElement).style.color = muted; }}>
                   <Icon size={18} />
                 </a>
               ))}
@@ -310,8 +317,8 @@ export default function Home() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 20 }}>
             {Object.entries(skills).map(([cat, items]) => (
               <div key={cat} style={{ background: navy, border: `1px solid ${border}`, borderRadius: 10, padding: '1.25rem 1.5rem', transition: 'all 0.2s' }}
-                onMouseEnter={e => e.currentTarget.style.borderColor = borderHover}
-                onMouseLeave={e => e.currentTarget.style.borderColor = border}>
+                onMouseEnter={e => (e.currentTarget as HTMLDivElement).style.borderColor = borderHover}
+                onMouseLeave={e => (e.currentTarget as HTMLDivElement).style.borderColor = border}>
                 <h3 style={{ color: gold, fontSize: 13, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 14, margin: '0 0 14px' }}>{cat}</h3>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                   {items.map(skill => (
@@ -333,8 +340,8 @@ export default function Home() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 24 }}>
             {projects.map((p, i) => (
               <div key={i} style={{ background: navyMid, border: `1px solid ${border}`, borderRadius: 12, padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: 12, transition: 'all 0.2s', position: 'relative' }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = p.accent; e.currentTarget.style.transform = 'translateY(-4px)'; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = border; e.currentTarget.style.transform = 'none'; }}>
+                onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.borderColor = p.accent; (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)'; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.borderColor = border; (e.currentTarget as HTMLDivElement).style.transform = 'none'; }}>
 
                 {p.badge && (
                   <div style={{ position: 'absolute', top: 16, right: 16, background: p.badge === 'NEW' ? '#22C55E' : p.badge === 'LIVE' ? '#4C6EF5' : '#F59E0B', color: navy, fontSize: 10, fontWeight: 800, padding: '3px 8px', borderRadius: 4, letterSpacing: '0.08em' }}>
@@ -384,8 +391,8 @@ export default function Home() {
                 <div key={i} style={{ position: 'relative' }}>
                   <div style={{ position: 'absolute', left: -38, top: 4, width: 14, height: 14, borderRadius: '50%', background: gold, border: `3px solid ${navyMid}` }} />
                   <div style={{ background: navy, border: `1px solid ${border}`, borderRadius: 10, padding: '1.25rem 1.5rem' }}
-                    onMouseEnter={e => e.currentTarget.style.borderColor = borderHover}
-                    onMouseLeave={e => e.currentTarget.style.borderColor = border}>
+                    onMouseEnter={e => (e.currentTarget as HTMLDivElement).style.borderColor = borderHover}
+                    onMouseLeave={e => (e.currentTarget as HTMLDivElement).style.borderColor = border}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 8, marginBottom: 12 }}>
                       <div>
                         <h3 style={{ fontSize: '1rem', fontWeight: 700, color: white, margin: '0 0 4px' }}>{exp.role}</h3>
@@ -466,8 +473,8 @@ export default function Home() {
             ].map(({ icon: Icon, label, val, href }) => (
               <a key={label} href={href} target="_blank" rel="noopener noreferrer"
                 style={{ display: 'flex', alignItems: 'center', gap: 14, background: navy, border: `1px solid ${border}`, borderRadius: 10, padding: '1rem 1.25rem', textDecoration: 'none', transition: 'all 0.2s' }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = gold; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = border; e.currentTarget.style.transform = 'none'; }}>
+                onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = gold; (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-2px)'; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = border; (e.currentTarget as HTMLAnchorElement).style.transform = 'none'; }}>
                 <div style={{ width: 40, height: 40, borderRadius: 8, background: 'rgba(232,168,56,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <Icon size={18} color={gold} />
                 </div>
