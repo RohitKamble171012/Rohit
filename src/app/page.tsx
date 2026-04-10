@@ -138,11 +138,11 @@ export default function Home() {
   ];
 
   const certifications = [
-    'Artificial Intelligence – NoviTech Pvt. Ltd.',
+    'Software Engineer Certification - HackerRank',
     'MongoDB Node.js Developers Path',
     'Full Stack Web Development – GeeksforGeeks',
     'AI-ML Cohort 8 Virtual Internship – AICTE',
-    'Power BI – Job Simulation',
+    'Artificial Intelligence – NoviTech Pvt. Ltd.',
     'IIT Bombay Internship Certification'
   ];
 
